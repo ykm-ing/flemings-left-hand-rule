@@ -141,6 +141,9 @@ export default function HandModel({ showLabels = true, highlightFinger = null }:
           enableRotate={true}
           minDistance={3}
           maxDistance={15}
+          enableDamping={true}
+          dampingFactor={0.05}
+          zoomSpeed={0.5}
         />
         <gridHelper args={[10, 10, '#cccccc', '#eeeeee']} position={[0, -2, 0]} />
       </Canvas>
