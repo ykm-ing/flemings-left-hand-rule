@@ -130,23 +130,24 @@ function Hand3D({ showLabels, highlightFinger }: HandModelProps) {
 export default function HandModel({ showLabels = true, highlightFinger = null }: HandModelProps) {
   return (
     <div 
-      style={{ width: '100%', height: '100%', minHeight: '400px' }}
-      onWheel={(e) => e.stopPropagation()}
+      style={{ width: '100%', height: '400px', touchAction: 'none', position: 'relative' }}
+      onWheel={(e) => { e.preventDefault(); e.stopPropagation(); }}
     >
-      <Canvas camera={{ position: [5, 3, 5], fov: 50 }}>
+      <Canvas 
+        camera={{ position: [5, 3, 5], fov: 50 }}
+        gl={{ preserveDrawingBuffer: true }}
+      >
         <ambientLight intensity={0.6} />
         <directionalLight position={[10, 10, 5]} intensity={1} />
         <directionalLight position={[-10, -10, -5]} intensity={0.3} />
         <Hand3D showLabels={showLabels} highlightFinger={highlightFinger} />
         <OrbitControls 
+          makeDefault
           enablePan={true}
-          enableZoom={true}
+          enableZoom={false}
           enableRotate={true}
-          minDistance={3}
-          maxDistance={15}
           enableDamping={true}
           dampingFactor={0.05}
-          zoomSpeed={0.5}
         />
         <gridHelper args={[10, 10, '#cccccc', '#eeeeee']} position={[0, -2, 0]} />
       </Canvas>
