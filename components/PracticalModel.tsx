@@ -6,6 +6,7 @@ import { OrbitControls, Text, Html } from '@react-three/drei';
 import * as THREE from 'three';
 import { Question } from '../utils/quiz';
 
+// Component for rendering a thick 3D arrow
 function ThickArrow({ start, direction, length = 1.5, color, label, visible = true }: { start: [number, number, number], direction: [number, number, number], length?: number, color: string, label: string, visible?: boolean }) {
   if (!visible) return null;
 
