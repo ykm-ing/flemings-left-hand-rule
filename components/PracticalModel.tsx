@@ -4,7 +4,7 @@ import { useRef } from 'react';
 import { Canvas } from '@react-three/fiber';
 import { OrbitControls, Text, Html } from '@react-three/drei';
 import * as THREE from 'three';
-import { ModelProps } from '../utils/quiz';
+import { Question } from '../utils/quiz';
 
 function ThickArrow({ start, direction, length = 1.5, color, label, visible = true }: { start: [number, number, number], direction: [number, number, number], length?: number, color: string, label: string, visible?: boolean }) {
   if (!visible) return null;
@@ -85,7 +85,7 @@ function Magnet({ position, isNorth, showPolarity }: { position: [number, number
 }
 
 
-function Scene({ question }: { question: any }) {
+function Scene({ question }: { question: Question }) {
   // Determine physics state from question
   // We need to reconstruct the full state because the question only has given + answer
   // But for the visualization, we need to know all 3 props (Field, Current, Force)
@@ -186,7 +186,7 @@ function Scene({ question }: { question: any }) {
   );
 }
 
-export default function PracticalModel({ question }: { question: any }) {
+export default function PracticalModel({ question }: { question: Question | null }) {
   if (!question) return null;
 
   return (
