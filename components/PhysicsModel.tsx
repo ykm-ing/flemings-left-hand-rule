@@ -109,8 +109,11 @@ function Scene({ question }: { question: Question }) {
 
   const showMagnetPolarity = hiddenFactor !== 'field';
 
+  // Rotation applied to give a better perspective:
+  // 5 deg tilt on X axis (Top back)
+  // -5 deg rotation on Y axis (Clockwise/Right)
   return (
-    <group>
+    <group rotation={[5 * (Math.PI / 180), -5 * (Math.PI / 180), 0]}>
       {/* Magnets */}
       {/* If Field is Right (Left -> Right), Left is N, Right is S */}
       <Magnet position={[-2.5, 0, 0]} isNorth={isFieldRight} showPolarity={showMagnetPolarity} />
