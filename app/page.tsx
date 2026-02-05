@@ -306,6 +306,11 @@ export default function Home() {
       </div>
 
       <style jsx>{`
+        :global(.model-container) {
+          width: 100%;
+          height: 600px; /* Force large desktop height */
+        }
+
         .answer-grid {
           grid-template-columns: repeat(2, 1fr);
         }
@@ -324,7 +329,7 @@ export default function Home() {
             padding: 15px !important;
           }
           .model-container {
-            height: 250px !important;
+            height: 250px !important; /* Mobile height override */
           }
           .answer-grid {
             grid-template-columns: repeat(3, 1fr) !important;
