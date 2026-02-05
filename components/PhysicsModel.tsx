@@ -192,8 +192,8 @@ export default function PracticalModel({ question }: { question: Question | null
   if (!question) return null;
 
   return (
-    <div style={{ width: '100%', height: '400px', touchAction: 'none' }}>
-      <Canvas camera={{ position: [0, 2, 10], fov: 45 }}>
+    <div className="model-container" style={{ width: '100%', touchAction: 'none' }}>
+      <Canvas camera={{ position: [0, 2, 11], fov: 35 }}>
         <ambientLight intensity={0.7} />
         <pointLight position={[10, 10, 10]} intensity={1} />
         <Scene question={question} />

@@ -100,7 +100,7 @@ export default function Home() {
           marginBottom: '20px'
         }}>
           {/* 3D Model */}
-          <div style={{
+          <div className="card-panel" style={{
             background: 'white',
             borderRadius: '15px',
             padding: '20px',
@@ -122,7 +122,7 @@ export default function Home() {
           </div>
 
           {/* Question Panel */}
-          <div style={{
+          <div className="card-panel" style={{
             background: 'white',
             borderRadius: '15px',
             padding: '30px',
@@ -198,9 +198,8 @@ export default function Home() {
             </div>
 
             {/* Answer Buttons */}
-            <div style={{
+            <div className="answer-grid" style={{
               display: 'grid',
-              gridTemplateColumns: 'repeat(2, 1fr)',
               gap: '10px',
               marginBottom: '20px'
             }}>
@@ -307,6 +306,10 @@ export default function Home() {
       </div>
 
       <style jsx>{`
+        .answer-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
         @keyframes fadeIn {
           from { opacity: 0; transform: translateY(-10px); }
           to { opacity: 1; transform: translateY(0); }
@@ -315,6 +318,38 @@ export default function Home() {
         @media (max-width: 768px) {
           .dashboard-grid {
             grid-template-columns: 1fr !important;
+            gap: 10px !important;
+          }
+          .card-panel {
+            padding: 15px !important;
+          }
+          .model-container {
+            height: 250px !important;
+          }
+          .answer-grid {
+            grid-template-columns: repeat(3, 1fr) !important;
+            gap: 5px !important;
+          }
+          h1 {
+            font-size: 1.6rem !important;
+            margin-bottom: 5px !important;
+          }
+          /* Hide the 'Observe setup' text and line breaks on mobile */
+          .card-panel p {
+            display: none;
+          }
+          /* Compact the 'Information' and 'Question' boxes */
+          .card-panel > div {
+            padding: 10px !important;
+            margin-bottom: 15px !important;
+          }
+          .card-panel h2 {
+            font-size: 1.2rem !important;
+            margin-bottom: 10px !important;
+          }
+          button {
+            padding: 10px 5px !important;
+            font-size: 0.9rem !important;
           }
         }
       `}</style>
