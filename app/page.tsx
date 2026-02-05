@@ -93,7 +93,7 @@ export default function Home() {
         </div>
 
         {/* Main Content */}
-        <div style={{
+        <div className="dashboard-grid" style={{
           display: 'grid',
           gridTemplateColumns: '1fr 1fr',
           gap: '20px',
@@ -313,7 +313,7 @@ export default function Home() {
         }
         
         @media (max-width: 768px) {
-          main > div > div:first-of-type {
+          .dashboard-grid {
             grid-template-columns: 1fr !important;
           }
         }
