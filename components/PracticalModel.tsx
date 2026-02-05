@@ -4,6 +4,7 @@ import { useRef } from 'react';
 import { Canvas } from '@react-three/fiber';
 import { OrbitControls, Text, Html } from '@react-three/drei';
 import * as THREE from 'three';
+// Import only the Question type from quiz utility
 import { Question } from '../utils/quiz';
 
 // Component for rendering a thick 3D arrow
