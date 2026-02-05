@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import PracticalModel from '@/components/PracticalModel';
+import PracticalModel from '@/components/PhysicsModel';
 import { 
   generateQuestion, 
   checkAnswer, 
