@@ -15,7 +15,7 @@ button {
 
 .model-container {
   width: 100%;
-  height: 550px; /* Increased from 400px for larger desktop view */
+  height: 600px;
   touch-action: none;
 }
 

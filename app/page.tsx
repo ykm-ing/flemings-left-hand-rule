@@ -306,11 +306,6 @@ export default function Home() {
       </div>
 
       <style jsx>{`
-        :global(.model-container) {
-          width: 100%;
-          height: 600px; /* Force large desktop height */
-        }
-
         .answer-grid {
           grid-template-columns: repeat(2, 1fr);
         }
