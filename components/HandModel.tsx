@@ -143,11 +143,9 @@ export default function HandModel({ showLabels = true, highlightFinger = null }:
         <Hand3D showLabels={showLabels} highlightFinger={highlightFinger} />
         <OrbitControls 
           makeDefault
-          enablePan={true}
+          enablePan={false}
           enableZoom={false}
-          enableRotate={true}
-          enableDamping={true}
-          dampingFactor={0.05}
+          enableRotate={false}
         />
         <gridHelper args={[10, 10, '#cccccc', '#eeeeee']} position={[0, -2, 0]} />
       </Canvas>

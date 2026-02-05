@@ -1,12 +1,11 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import HandModel from '@/components/HandModel';
+import PracticalModel from '@/components/PracticalModel';
 import { 
   generateQuestion, 
   checkAnswer, 
-  getDisplayName, 
-  getFingerName,
+  getDisplayName,
   getDirectionDisplay,
   type Question, 
   type Direction 
@@ -14,6 +13,7 @@ import {
 
 export default function Home() {
   const [question, setQuestion] = useState<Question | null>(null);
+  const [questionId, setQuestionId] = useState(0);
   const [score, setScore] = useState(0);
   const [totalQuestions, setTotalQuestions] = useState(0);
   const [feedback, setFeedback] = useState<string>('');
@@ -21,6 +21,7 @@ export default function Home() {
 
   useEffect(() => {
     setQuestion(generateQuestion());
+    setQuestionId(prev => prev + 1);
   }, []);
 
   const handleAnswer = (direction: Direction) => {
@@ -37,6 +38,7 @@ export default function Home() {
       // Generate new question after a short delay
       setTimeout(() => {
         setQuestion(generateQuestion());
+        setQuestionId(prev => prev + 1);
         setShowFeedback(false);
       }, 1500);
     } else {
@@ -50,7 +52,7 @@ export default function Home() {
     }
   };
 
-  const directions: Direction[] = ['up', 'down', 'left', 'right', 'forward', 'backward'];
+  const directions: Direction[] = ['up', 'down', 'left', 'right', 'out', 'in'];
 
   if (!question) return <div>Loading...</div>;
 
@@ -110,12 +112,13 @@ export default function Home() {
               color: '#333',
               fontSize: '1.3rem'
             }}>
-              3D Hand Model
+              Visualization
             </h2>
             <p style={{ color: '#666', fontSize: '0.9rem', marginBottom: '10px' }}>
-              Drag to rotate • Scroll to zoom
+              Observe the setup below. <br/>
+              <span style={{ color: '#ff4d4d' }}>Red = North</span>, <span style={{ color: '#4d94ff' }}>Blue = South</span>
             </p>
-            <HandModel showLabels={true} highlightFinger={null} />
+            <PracticalModel key={questionId} question={question} />
           </div>
 
           {/* Question Panel */}
@@ -149,7 +152,7 @@ export default function Home() {
                 color: '#4a5568',
                 fontSize: '1.1rem'
               }}>
-                Given:
+                Information:
               </h3>
               {question.given.map((item, index) => (
                 <div key={index} style={{
@@ -157,7 +160,7 @@ export default function Home() {
                   fontSize: '1.1rem',
                   color: '#2d3748'
                 }}>
-                  <strong>{getFingerName(item.type)}</strong> ({getDisplayName(item.type)}): 
+                  <strong>{getDisplayName(item.type)}</strong>: 
                   <span style={{ 
                     marginLeft: '10px',
                     color: '#4c51bf',
@@ -190,7 +193,7 @@ export default function Home() {
                 color: '#d97706',
                 margin: 0
               }}>
-                {getFingerName(question.answer.type)} ({getDisplayName(question.answer.type)})
+                {getDisplayName(question.answer.type)}
               </p>
             </div>
 
@@ -297,7 +300,7 @@ export default function Home() {
               borderLeft: '4px solid #4d96ff'
             }}>
               <strong style={{ color: '#2b6cb0' }}>Second Finger</strong>
-              <p style={{ margin: '5px 0 0 0', color: '#666' }}>Current direction (conventional)</p>
+              <p style={{ margin: '5px 0 0 0', color: '#666' }}>Current direction (+ to -)</p>
             </div>
           </div>
         </div>
