@@ -119,7 +119,7 @@ function Scene({ question }: { question: Question }) {
       {/* Wire */}
       <mesh rotation={[Math.PI / 2, 0, 0]}>
         <cylinderGeometry args={[0.2, 0.2, 8, 16]} />
-        <meshStandardMaterial color="#e5e7eb" metallic={0.5} roughness={0.5} />
+        <meshStandardMaterial color="#e5e7eb" metalness={0.5} roughness={0.5} />
       </mesh>
 
       {/* Force Arrow (Yellow/Orange) */}
