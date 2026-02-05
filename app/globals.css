@@ -12,3 +12,15 @@ html, body {
 button {
   font-family: inherit;
 }
+
+.model-container {
+  width: 100%;
+  height: 400px;
+  touch-action: none;
+}
+
+@media (max-width: 768px) {
+  .model-container {
+    height: 250px;
+  }
+}
